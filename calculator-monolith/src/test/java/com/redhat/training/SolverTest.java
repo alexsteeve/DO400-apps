@@ -35,13 +35,33 @@ public class SolverTest {
     }
 
     @Test
+    public void solve_multiply() {
+        assertEquals(solverService.solve("5*3"), 15);
+    }
+
+    @Test
     public void solve_composition() {
         assertEquals(solverService.solve("20+5+3+2"), 30);
     }
 
     @Test
+    public void solve_multiply_composition() {
+        assertEquals(solverService.solve("20*5*3"), 300);
+    }
+
+    @Test
     public void solve_addition_overprioritize_substraction() {
         assertEquals(solverService.solve("20-5+3+2"), 10);
+    }
+
+    @Test
+    public void solve_multiplication_overprioritize_addition() {
+        assertEquals(solverService.solve("20*5+3+2"), 105);
+    }
+
+    @Test
+    public void solve_multiplication_overprioritize_substraction() {
+        assertEquals(solverService.solve("20*5+3-2"), 101);
     }
 
     @Test
